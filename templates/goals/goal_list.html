@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <h2>My Goals</h2>
 <a href="{% url 'goals:goal_create' %}">+ New Goal</a>
 <ul>
 	{% for goal in object_list %}
 	<li>
-		<strong>{{ goal.title }}</strong> - Due: {{ goal.due_date }}
-		{% if goal.is_completed %} ✅ {% else %} ❌ {% endif %}
+		<form action="{% url 'goals:goal_complete' goal.pk %}" method="post" class="goal-toggle-form">
+			{% csrf_token %}
+			<label>
+				<input type="checkbox" name="is_completed" class="completion-checkbox" {% if goal.is_completed %}checked{% endif %}>
+				<strong class="goal-title {% if goal.is_completed %}completed{% endif %}">{{ goal.title }}</strong> - Due: {{ goal.due_date }}{% if goal.is_completed %} ✅ {% else %} ❌ {% endif %}
+			</label>
+		</form>
+		<a href="{# % url 'goals:goal_update' goal.pk % #}" title="Edit">✏️</a>
 	</li>
 	{% empty %}
 	<li>No goals yet.</li>
 	{% endfor %}
 </ul>
+{% endblock %}
+{% block script %}
+	<script src="{% static 'js/goals.js' %}"></script>
 {% endblock %}

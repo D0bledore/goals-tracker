@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Goal Tracker</title>
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 	</head>
 	
 	<body>
@@ -16,5 +18,7 @@
 		{% endif %}
 		<hr>
 		{% block content %}{% endblock %}
+		{% block script %}{% endblock %}
 	</body>
 </html>
+

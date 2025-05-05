@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import Goal
 from .forms import GoalForm
@@ -26,3 +27,11 @@ class GoalCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+@login_required
+def toggle_complete(request, pk):
+    goal = get_object_or_404(Goal, pk=pk, user=request.user)
+    goal.is_completed = not goal.is_completed
+    goal.save()
+    return redirect('goals:goal_list')
