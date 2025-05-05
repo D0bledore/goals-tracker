@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>My Goals</h2>
+<a href="{% url 'goals:goal_create' %}">+ New Goal</a>
+<ul>
+	{% for goal in object_list %}
+	<li>
+		<strong>{{ goal.title }}</strong> - Due: {{ goal.due_date }}
+		{% if goal.is_completed %} ✅ {% else %} ❌ {% endif %}
+	</li>
+	{% empty %}
+	<li>No goals yet.</li>
+	{% endfor %}
+</ul>
+{% endblock %}
