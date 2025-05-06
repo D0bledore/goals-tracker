@@ -11,7 +11,6 @@ urlpatterns = [
             template_name='accounts/login.html'), name='login'),
         path('logout/', auth_views.LogoutView.as_view(
             next_page='accounts:login'), name='logout'),
-        path('', views.welcome_view, name='welcome'),
 
         # Password reset flow
         path('password_reset/', auth_views.PasswordResetView.as_view(

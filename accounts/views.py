@@ -10,11 +10,7 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('accounts:welcome')
+            return redirect('goals:goal_list')
     else:
         form = CustomUserCreationForm()
     return render(request, 'accounts/signup.html', {'form': form})
-
-
-def welcome_view(request):
-    return render(request, 'accounts/welcome.html')

@@ -20,8 +20,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('', include('accounts.urls')),
+    path('', include('core.urls')),
     path('goals/', include('goals.urls')),
     # Enable built-in auth URLs
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome to GoalsTracker</h1>
+<p>This app helps you stay focused and achieve your daily goals.</p>
+<p><a href="{% url 'accounts:login' %}">Log in</a> or <a href="{% url 'accounts:signup' %}">Sign up</a> to get started.</p>
+{% endblock %}

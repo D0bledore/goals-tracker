@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'goals',
+    'core', 
 ]
 
 MIDDLEWARE = [
@@ -128,7 +129,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'accounts:welcome'
+# User landing page
+LOGIN_REDIRECT_URL = 'goals:goal_list'
 
 # Email backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
