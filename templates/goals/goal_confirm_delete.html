@@ -6,6 +6,6 @@
 <form method="post">
 	{% csrf_token %}
 	<button type="submit">Yes, delete this goal</button>
-	<a href="{% url 'goals:goal_list' %}">Cancel</a>
 </form>
+<a href="{% url 'goals:goal_list' %}">Cancel</a>
 {% endblock %}
