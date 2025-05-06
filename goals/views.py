@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, get_object_or_404
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
@@ -38,6 +38,14 @@ class GoalUpdateView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return Goal.objects.filter(user=self.request.user)
 
+
+class GoalDeleteView(LoginRequiredMixin, DeleteView):
+    model = Goal
+    template_name = 'goals/goal_confirm_delete.html'
+    success_url = reverse_lazy('goals:goal_list')
+
+    def get_queryset(self):
+        return Goal.objects.filter(user=self.request.user)
 
 @login_required
 def toggle_complete(request, pk):
