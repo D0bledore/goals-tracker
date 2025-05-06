@@ -22,4 +22,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('', include('accounts.urls')),
     path('goals/', include('goals.urls')),
+    # Enable built-in auth URLs
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
