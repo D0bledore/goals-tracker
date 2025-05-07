@@ -147,6 +147,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # Using whitenoise for static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [ BASE_DIR / "static" ]
 
 # Good practice security
 SECURE_BROWSER_XSS_FILTER = True
