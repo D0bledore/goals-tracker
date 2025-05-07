@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
 
 # Create your views here.
@@ -14,3 +15,8 @@ def signup_view(request):
     else:
         form = CustomUserCreationForm()
     return render(request, 'accounts/signup.html', {'form': form})
+
+
+@login_required
+def profile_view(request):
+    return render(request, 'accounts/profile.html')

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-4">
+	<h2 class="mb-4">Account Profile</h2>
+	<ul class="list-group">
+		<li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
+		<li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+		<li class="list-group-item"><strong>Date joined:</strong> {{ user.date_joined|date:"F j, Y" }}</li>
+	</ul>
+	<div class="d-flex justify-content-between mt-4">
+		<a href="{% url 'goals:goal_list' %}" class="btn btn-sm btn-success">
+			Back to Goals
+		</a>
+		<a href="{% url 'accounts:password_change' %}" class="btn btn-sm btn-warning">
+			Change Password
+		</a>
+	</div>
+</div>
+{% endblock %}

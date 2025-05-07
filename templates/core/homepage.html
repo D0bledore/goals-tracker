@@ -1,6 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Welcome to GoalsTracker</h1>
-<p>This app helps you stay focused and achieve your daily goals.</p>
-<p><a href="{% url 'accounts:login' %}">Log in</a> or <a href="{% url 'accounts:signup' %}">Sign up</a> to get started.</p>
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+  <div class="text-center w-100" style="max-width: 600px;">
+    <div class="card shadow-lg p-4">
+      <div class="card-body">
+        <h1 class="card-title mb-3">🎯 Welcome to <span class="text-primary">GoalsTracker</span></h1>
+        <p class="card-text fs-5">
+          This app helps you stay focused and achieve your daily goals.
+        </p>
+        <div class="d-grid gap-2 mt-4">
+          <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg">Log in</a>
+          <a href="{% url 'accounts:signup' %}" class="btn btn-outline-primary btn-lg">Sign up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

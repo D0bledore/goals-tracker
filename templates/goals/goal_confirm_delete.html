@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Delete Goal</h2>
-<p>Are you sure you want to delete the goal: <strong>{{ object.title }}</strong>?</p>
-
-<form method="post">
-	{% csrf_token %}
-	<button type="submit">Yes, delete this goal</button>
-</form>
-<a href="{% url 'goals:goal_list' %}">Cancel</a>
+<div class="container mt-5">
+  <div class="alert alert-warning">
+    <h4 class="alert-heading">Delete Goal</h4>
+    <p>Are you sure you want to delete the goal: <strong>{{ object.title }}</strong>?</p>
+    <form method="post" class="d-inline">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Yes, delete this goal</button>
+    </form>
+    <a href="{% url 'goals:goal_list' %}" class="btn btn-secondary ms-2">Cancel</a>
+  </div>
+</div>
 {% endblock %}
