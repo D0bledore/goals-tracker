@@ -15,7 +15,7 @@ class GoalListView(LoginRequiredMixin, ListView):
     template_name = 'goals/goals_list.html'
 
     def get_queryset(self):
-        return Goal.objects.filter(user=self.request.user)
+        return Goal.objects.filter(user=self.request.user).order_by('-created_at')
 
 
 class GoalCreateView(LoginRequiredMixin, CreateView):
