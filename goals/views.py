@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, get_object_or_404
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -10,12 +10,21 @@ from .forms import GoalForm
 
 # Create your views here.
 
-class GoalListView(LoginRequiredMixin, ListView):
-    model = Goal
-    template_name = 'goals/goals_list.html'
+class GoalListView(LoginRequiredMixin, TemplateView):
+    template_name = 'goals/goal_list.html'
 
-    def get_queryset(self):
-        return Goal.objects.filter(user=self.request.user).order_by('-created_at')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        priority_filter = self.request.GET.get('priority')
+
+        all_goals = Goal.objects.filter(user=self.request.user).order_by('-created_at')
+
+        if priority_filter in ['high', 'medium', 'low']:
+            all_goals = all_goals.filter(priority=priority_filter)
+
+        context['active_goals'] = all_goals.filter(is_archived=False)
+        context['archived_goals'] = all_goals.filter(is_archived=True)
+        return context
 
 
 class GoalCreateView(LoginRequiredMixin, CreateView):
@@ -62,5 +71,22 @@ class GoalDeleteView(LoginRequiredMixin, DeleteView):
 def toggle_complete(request, pk):
     goal = get_object_or_404(Goal, pk=pk, user=request.user)
     goal.is_completed = not goal.is_completed
+    goal.save()
+    return redirect('goals:goal_list')
+
+
+@login_required
+def toggle_priority(request, pk):
+    goal = get_object_or_404(Goal, pk=pk, user=request.user)
+    next_priority = {'low': 'medium', 'medium': 'high', 'high': 'low'}
+    goal.priority = next_priority.get(goal.priority, 'low')
+    goal.save()
+    return redirect('goals:goal_list')
+
+
+@login_required
+def toggle_archive(request, pk):
+    goal = get_object_or_404(Goal, pk=pk, user=request.user)
+    goal.is_archived = not goal.is_archived
     goal.save()
     return redirect('goals:goal_list')

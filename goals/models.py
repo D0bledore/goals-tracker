@@ -11,6 +11,19 @@ class Goal(models.Model):
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+    is_archived = models.BooleanField(default=False)
+
+    PRIORITY_CHOICES = [
+            ('low', 'Low'),
+            ('medium', 'Medium'),
+            ('high', 'High'),
+        ]
+
+    priority = models.CharField(
+            max_length=10,
+            choices=PRIORITY_CHOICES,
+            default='low',
+            )
 
     def __str__(self):
         return self.title
