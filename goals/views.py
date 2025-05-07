@@ -35,7 +35,6 @@ class GoalCreateView(LoginRequiredMixin, CreateView):
 
 
     def form_valid(self, form):
-        print("CREATE METHOD CALLED")
         form.instance.user = self.request.user
         messages.success(self.request, "Created a new goal!")
         return super().form_valid(form)
