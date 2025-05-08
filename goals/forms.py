@@ -6,5 +6,10 @@ class GoalForm(forms.ModelForm):
         model = Goal
         fields = ['title', 'description', 'due_date']
         widgets = {
-                'due_date': forms.DateInput(attrs={'type': 'date'}),
-                }
+            'title': forms.TextInput(attrs={'class': 'w-100'}),
+            'description': forms.Textarea(attrs={'class': 'w-100', 'rows': 6}),
+            'due_date': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'w-100'
+            }),
+        }

@@ -58,18 +58,26 @@
 
 
 
-	<!-- Django's messaging framework -->
-	{% if messages %}
-	{% for message in messages %}
-	<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-		{{ message }}
-		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	</div>
-	{% endfor %}
-	{% endif %}
+	<!-- Start of Bootstrap Base Container -->
+	<div class="container mt-4">
 
-	<!-- Content & Script block -->
-	{% block content %}{% endblock %}
+		<!-- Django's messaging framework -->
+		{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+			{{ message }}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		{% endfor %}
+		{% endif %}
+
+		<!-- Content Block -->
+		{% block content %}{% endblock %}
+
+		<!-- End of Bootstrap Base Container -->
+	</div>
+
+
 	{% block script %}{% endblock %}
 
 	<!-- Boostrap Javascript Bundel -->

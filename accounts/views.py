@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from .forms import CustomUserCreationForm
+from django.contrib.auth.views import PasswordChangeView
+from .forms import CustomUserCreationForm, CustomPasswordChangeForm
 
 # Create your views here.
 
@@ -20,3 +22,9 @@ def signup_view(request):
 @login_required
 def profile_view(request):
     return render(request, 'accounts/profile.html')
+
+
+class CustomPasswordChangeView(PasswordChangeView):
+    form_class = CustomPasswordChangeForm
+    template_name = 'accounts/password_change.html'
+    success_url = reverse_lazy('accounts:password_change_done')

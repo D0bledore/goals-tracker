@@ -2,20 +2,30 @@
 {% load static %}
 
 {% block content %}
-<div class="container py-4">
-	<h2 class="mb-4">Account Profile</h2>
-	<ul class="list-group">
-		<li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
-		<li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
-		<li class="list-group-item"><strong>Date joined:</strong> {{ user.date_joined|date:"F j, Y" }}</li>
-	</ul>
-	<div class="d-flex justify-content-between mt-4">
-		<a href="{% url 'goals:goal_list' %}" class="btn btn-sm btn-success">
-			Back to Goals
-		</a>
-		<a href="{% url 'accounts:password_change' %}" class="btn btn-sm btn-warning">
-			Change Password
-		</a>
+<div class="container py-5">
+	<div class="card mx-auto shadow-sm mx-5">
+		<div class="card-body">
+			<h3 class="card-title text-center mb-4">Your Profile</h3>
+			<ul class="list-group list-group-flush mb-3">
+				<li class="list-group-item">
+					<strong>Username:</strong> {{ user.username }}
+				</li>
+				<li class="list-group-item">
+					<strong>Email:</strong> {{ user.email }}
+				</li>
+				<li class="list-group-item">
+					<strong>Date Joined:</strong> {{ user.date_joined|date:"F j, Y" }}
+				</li>
+			</ul>
+			<div class="d-flex justify-content-between">
+				<a href="{% url 'goals:goal_list' %}" class="btn btn-outline-secondary btn-sm">
+					← Back to Goals
+				</a>
+				<a href="{% url 'accounts:password_change' %}" class="btn btn-outline-warning btn-sm">
+					Change Password
+				</a>
+			</div>
+		</div>
 	</div>
 </div>
 {% endblock %}
