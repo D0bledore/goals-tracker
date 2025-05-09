@@ -63,8 +63,8 @@
 				<form action="{% url 'goals:goal_complete' goal.pk %}" method="post" class="text-end d-inline">
 					{% csrf_token %}
 					<!-- JS uses completion-checkbox class -->
-					<input type="checkbox" class="large-checkbox completion-checkbox" {% if goal.is_completed
-						%}checked{% endif %}>
+					<input type="checkbox" {% if goal.is_completed %}checked{% endif %}
+					class="large-checkbox completion-checkbox">
 				</form>
 			</div>
 
