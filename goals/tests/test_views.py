@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from goals.models import Goal
 
+
 class GoalViewTests(TestCase):
     def setUp(self):
         # Set up two users and one goal

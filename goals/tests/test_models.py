@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from goals.models import Goal
 
+
 class GoalModelTests(TestCase):
     def setUp(self):
         # Create a test user for assigning goals

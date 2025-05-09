@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, get_object_or_404
-from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
+from django.views.generic import (
+    TemplateView, CreateView, UpdateView, DeleteView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -17,7 +18,8 @@ class GoalListView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         priority_filter = self.request.GET.get('priority')
 
-        all_goals = Goal.objects.filter(user=self.request.user).order_by('-created_at')
+        all_goals = Goal.objects.filter(
+            user=self.request.user).order_by('-created_at')
 
         if priority_filter in ['high', 'medium', 'low']:
             all_goals = all_goals.filter(priority=priority_filter)
@@ -32,7 +34,6 @@ class GoalCreateView(LoginRequiredMixin, CreateView):
     template_name = 'goals/goal_form.html'
     form_class = GoalForm
     success_url = reverse_lazy('goals:goal_list')
-
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -57,7 +58,7 @@ class GoalUpdateView(LoginRequiredMixin, UpdateView):
 class GoalDeleteView(LoginRequiredMixin, DeleteView):
     model = Goal
     template_name = 'goals/goal_confirm_delete.html'
-    
+
     def get_success_url(self):
         messages.success(self.request, "Goal deleted!")
         return reverse_lazy('goals:goal_list')

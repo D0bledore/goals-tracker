@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'goals',
-    'core', 
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -92,19 +92,13 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
+VAL_PATH = 'django.contrib.auth.password_validation.'
+
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': VAL_PATH + 'UserAttributeSimilarityValidator'},
+    {'NAME': VAL_PATH + 'MinimumLengthValidator'},
+    {'NAME': VAL_PATH + 'CommonPasswordValidator'},
+    {'NAME': VAL_PATH + 'NumericPasswordValidator'},
 ]
 
 
@@ -139,15 +133,15 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')         
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD') 
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Using whitenoise for static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_DIRS = [ BASE_DIR / "static" ]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Good practice security
 SECURE_BROWSER_XSS_FILTER = True

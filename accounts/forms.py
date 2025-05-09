@@ -1,5 +1,7 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm, SetPasswordForm
+from django.contrib.auth.forms import (
+    UserCreationForm, PasswordChangeForm, AuthenticationForm, SetPasswordForm
+    PasswordResetForm)
 from django.contrib.auth.models import User
 
 
@@ -82,9 +84,6 @@ class CustomAuthenticationForm(AuthenticationForm):
         })
     )
 
-
-from django import forms
-from django.contrib.auth.forms import PasswordResetForm
 
 class CustomPasswordResetForm(PasswordResetForm):
     email = forms.EmailField(

@@ -7,6 +7,7 @@ from .forms import CustomUserCreationForm, CustomPasswordChangeForm
 
 # Create your views here.
 
+
 def signup_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -28,3 +29,4 @@ class CustomPasswordChangeView(PasswordChangeView):
     form_class = CustomPasswordChangeForm
     template_name = 'accounts/password_change.html'
     success_url = reverse_lazy('accounts:password_change_done')
+    

@@ -25,4 +25,3 @@ urlpatterns = [
     # Enable built-in auth URLs
     path('accounts/', include('django.contrib.auth.urls')),
 ]
-
