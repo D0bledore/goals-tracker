@@ -1,114 +1,133 @@
-# GoalsTracker
+# [GoalsTracker](https://goals-tracker-9zdg.onrender.com/)
 
-A minimal Django web app for setting and completing personal goals — like a focused to-do list that keeps you motivated and accountable.
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/d0bledore/goals-tracker)](https://github.com/d0bledore/goals-tracker/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/d0bledore/goals-tracker)](https://github.com/d0bledore/goals-tracker/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/d0bledore/goals-tracker)](https://github.com/d0bledore/goals-tracker)
+
+## Introduction
+
+GoalsTracker is a goal-setting web application built with Django. It provides users with a minimal and focused interface to define, manage, and complete their personal goals. Unlike full-featured productivity apps, GoalsTracker embraces simplicity — prioritizing essential functionality with a clean Bootstrap-based design and intuitive flow.
+
+---
+
+## UX Design
+
+This application follows a clean and minimal UX approach:
+
+- **Interface**: Bootstrap is used for layout and responsiveness.
+- **Typography**: Default Bootstrap typography ensures consistency and simplicity.
+- **Focus**: UX is intentionally kept minimal to draw user attention toward completing tasks rather than navigating features.
+
+---
+
+## User Stories
+
+- As a user, I want to sign up and log in, so that I can manage my own goals.
+- As a user, I want to create, edit, and delete goals, so that I can track my progress.
+- As a user, I want to mark a goal as completed, so that I can feel progress and stay motivated.
+- As a user, I want to set a due date or deadline for each goal, so that I stay accountable.
+- As a user I want to be able to reset my password in case I forget it.
+- As a user I want to be able to set priority for my goals, so I can prioritize better.
+---
 
 ## Features
 
-- User authentication: sign up, log in, log out
-- Secure goal creation (C in CRUD)
-- Edit/update your goals (U in CRUD)
-- Mark goals as completed with a checkbox (R in CRUD)
-- Completed goals show strike-through styling
-- Only the goal’s owner can view or modify it
-- Lightweight interface with clean HTML + minimal JavaScript
+### Existing Features
 
+- User authentication: Sign up, log in, and log out
+
+- Goal creation (C in CRUD)
+- Goal viewing and list display (R in CRUD)
+- Goal update/edit (U in CRUD)
+- Goal deletion (D in CRUD)
+- Completed goals appear with strike-through styling
+- Only authenticated users can view, create, or edit their own goals
+- Password Reset via Email
+
+📷 **Image sections for each CRUD action**  
+
+- Create a new Goal
+![screenshot](documentation/features/create_goal.png)
+
+- Edit Goal
+![screenshot](documentation/features/Edit_goal.png)
+
+- Read Goal List
+![screenshot](documentation/features/goal_list.png)
+
+- Set priority
+![screenshot](documentation/features/priority.png)
+
+**Password Reset Email**
+![screenshot](documentation/email_password_reset.png)
+
+---
 
 ### Future Features
 
-- Alternate delete functionality for goal model 
-- Filtering user goals
-- UX design update
-- Reminders 
-- dynamic filters (time-based?)
-- Daily Quotes for motivation
-- Admin User management (Forgot password? Contact admin..?)
+- **Email Reminders**: Users will be able to receive email reminders for upcoming or overdue goals. These will be customizable via their account settings.
+- **Goal Sharing**: Users will be able to share a goal with other registered users, encouraging collaboration or accountability.
+- **Daily Quotes**: A rotating display of motivational quotes will be added to inspire users and boost morale.
 
 
-## Tech Stack
+---
 
-- Django 5.2
-- PostgreSQL (planned)
-- HTML5, CSS (no JS frameworks)
-- Custom JS for checkbox auto-submit
+## Tools & Technologies Used
 
-## Setup
+- [![Git](https://img.shields.io/badge/Git-grey?logo=git&logoColor=F05032)](https://git-scm.com) used for version control (`git add`, `git commit`, `git push`)
+- [![GitHub](https://img.shields.io/badge/GitHub-grey?logo=github&logoColor=181717)](https://github.com) used for secure online code storage
+- [![VSCode](https://img.shields.io/badge/VSCode-grey?logo=visualstudiocode&logoColor=007ACC)](https://code.visualstudio.com) used as the local IDE for development
+- [![HTML](https://img.shields.io/badge/HTML-grey?logo=html5&logoColor=E34F26)](https://en.wikipedia.org/wiki/HTML) used for building static page content
+- [![CSS](https://img.shields.io/badge/CSS-grey?logo=css3&logoColor=1572B6)](https://en.wikipedia.org/wiki/CSS) used for styling the application
+- [![JavaScript](https://img.shields.io/badge/JavaScript-grey?logo=javascript&logoColor=F7DF1E)](https://www.javascript.com) used for interactive checkbox functionality
+- [![Python](https://img.shields.io/badge/Python-grey?logo=python&logoColor=3776AB)](https://www.python.org) used for server-side programming
+- [![Bootstrap](https://img.shields.io/badge/Bootstrap-grey?logo=bootstrap&logoColor=7952B3)](https://getbootstrap.com) used as the CSS framework for layout and design
+- [![Django](https://img.shields.io/badge/Django-grey?logo=django&logoColor=092E20)](https://www.djangoproject.com) used as the main web framework
+- [![PostgreSQL by Code Institute](https://img.shields.io/badge/PostgreSQL_by_Code_Institute-grey?logo=okta&logoColor=F05223)](https://dbs.ci-dbs.net) used as the project database
+- [![WhiteNoise](https://img.shields.io/badge/WhiteNoise-grey?logo=python&logoColor=FFFFFF)](https://whitenoise.readthedocs.io) used for serving static files with Render
+- [![Render](https://img.shields.io/badge/Render-grey?logo=render&logoColor=000000)](https://www.render.com) used to host the live site
+- Gmail SMTP was used for sending emails
+- Gunicorn was used as the production-level WSGI server for deployment
 
-```bash
-git clone <repo>
-cd goalstracker
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
+---
 
+## Agile Development Process
 
-## Project Structure 
+### GitHub Projects
 
-accounts/       # User signup/login/logout
-goals/          # Goal CRUD functionality
-templates/      # HTML templates for views
-static/         # CSS and JS files
+[GitHub Projects](https://github.com/users/D0bledore/projects/6) was used as an Agile planning board. 
 
+This workflow helped maintain continuous, incremental development and focused feature delivery.
 
-## Bug: Success Message Not Displaying After Goal Deletion
+---
 
-### Context
+## Testing
 
-While implementing the `GoalDeleteView` in Django using `django.views.generic.DeleteView`, I wanted to display a success message to the user after confirming the deletion of a goal.
+> [!NOTE]  
+> For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
-The `DeleteView` was working correctly — the goal was being deleted and redirected to the goal list — but the message:
+---
 
-```python
-messages.success(request, "Goal deleted!")
-``` 
+## Deployment
 
-never appeared. 
+The live deployed application can be found at:  
+👉 [https://goals-tracker-9zdg.onrender.com/](https://goals-tracker-9zdg.onrender.com/)
 
-### Diagnosis 
+---
 
-My first approach was to override the delete() method in GoalDeleteView like this:
+## Credits
 
-```python
-def delete(self, request, *args, **kwargs):
-    messages.success(self.request, "Goal deleted!")
-    return super().delete(request, *args, **kwargs)
-```
+### Content
 
-However, Django never called this method. No message appeared, and even inserting a debug `print()` revealed that the method wasn't triggered. Yet, the goal still deleted properly — clearly, Django was falling back to the default behavior.
+- [Django CBV Docs – DeleteView](https://docs.djangoproject.com/en/stable/ref/class-based-views/generic-editing/#django.views.generic.edit.DeleteView)
+- [Django Messages Framework](https://docs.djangoproject.com/en/stable/ref/contrib/messages/)
 
-This strongly suggested that my delete() override was either:
+### Media
 
-- Incorrectly defined (e.g., missing arguments)
+No external media used.
 
-- Not being recognized due to some deeper internal handling
+### Acknowledgements
 
+I am deeply thankful to the [Code Institute](https://codeinstitute.net) for providing me with this incredible opportunity to advance my career. The skills and knowledge I have gained through this program have been transformative.
 
-### Solution
-
-Instead of overriding `delete()`, I took a cleaner, more reliable approach by overriding `get_success_url()` — a method Django does call after a successful deletion.
-
-```python
-def get_success_url(self):
-    messages.success(self.request, "Goal deleted!")
-    return reverse_lazy('goals:goal_list')
-```
-
-This method runs after the object is deleted and before the user is redirected. Perfect spot to inject feedback like messages.
-
-
-### Takeaways
-
-- django.views.generic.DeleteView handles deletion via a built-in post() → `delete()` pipeline.
-
-- Overriding `delete()` is possible, but the signature must be exact — and mistakes lead to silent failures.
-
-- `get_success_url()` is a safe, clean alternative for post-action hooks like setting success messages.
-
-
-### Reflection
-
-This bug took over an hour to identify and resolve. It deepened my understanding of Django’s class-based views and reinforced the principle of relying on the framework’s intended extension points (like `get_success_url()` over `delete()` for non-critical logic).
-
-
+I want to extend my deepest appreciation to my partner, **Rose**, for her unwavering belief in me. Her encouragement led me to discover the Code Institute and apply for the Full-Stack Software Development Course, which has been a pivotal step in my professional journey.
