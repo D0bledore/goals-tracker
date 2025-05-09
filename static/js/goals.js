@@ -28,9 +28,7 @@ function handleToggleDescription(event) {
 	description.classList.toggle('show');
 
 	// Update button text
-	event.target.textContent = description.classList.contains('show')
-		? 'Hide description'
-		: 'See description';
+	event.target.textContent = description.classList.contains('show') ? 'Hide description' : 'See description';
 }
 
 function handleDeleteConfirmation(event) {
