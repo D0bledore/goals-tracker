@@ -1,9 +1,13 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <!-- Start of head -->
 
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 	<title>Goal Tracker</title>
 	<!-- CSS -->
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -64,7 +68,7 @@
 
 
 	<!-- Start of Bootstrap Base Container -->
-	<div class="container mt-4">
+	<main class="container mt-4">
 
 		<!-- Django's messaging framework -->
 		{% if messages %}
@@ -80,9 +84,18 @@
 		{% block content %}{% endblock %}
 
 		<!-- End of Bootstrap Base Container -->
-	</div>
+	</main>
 
+	<!-- Footer -->
+	<footer class="bg-light text-center text-muted py-3 mt-5 border-top">
+		<div class="container">
+		  <small>
+			Project by <a href="https://github.com/d0bledore" target="_blank" rel="noopener noreferrer" class="text-decoration-none">github.com/d0bledore</a>
+		  </small>
+		</div>
+	  </footer>
 
+	<!-- Aditional JS -->
 	{% block script %}{% endblock %}
 
 	<!-- Boostrap Javascript Bundel -->
